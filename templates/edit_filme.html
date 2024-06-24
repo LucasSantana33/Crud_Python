@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Filme</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Editar Filme</h1>
+        <form action="{{ url_for('filme_bp.edit_filme', filme_id=filme.id) }}" method="post">
+            <input type="text" name="titulo" placeholder="Título" value="{{ filme.titulo }}" required>
+            <input type="text" name="diretor" placeholder="Diretor" value="{{ filme.diretor }}" required>
+            <input type="number" name="ano" placeholder="Ano" value="{{ filme.ano }}" required>
+            <input type="text" name="genero" placeholder="Gênero" value="{{ filme.genero }}" required>
+            <button type="submit" class="btn btn-primary">Salvar</button>
+        </form>
+    </div>
+</body>
+</html>

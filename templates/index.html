@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Filmes App</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Filmes App</h1>
+        <a href="{{ url_for('usuario_bp.logout') }}">Logout</a>
+        <div>
+            <h2>Adicionar Filme</h2>
+            <form action="{{ url_for('filme_bp.add_filme') }}" method="post">
+                <input type="text" name="titulo" placeholder="Título" required>
+                <input type="text" name="diretor" placeholder="Diretor" required>
+                <input type="number" name="ano" placeholder="Ano" required>
+                <input type="text" name="genero" placeholder="Gênero" required>
+                <button type="submit" class="btn btn-success">Adicionar Filme</button>
+            </form>
+        </div>
+        <div>
+            <h2>Lista de Filmes</h2>
+            <ul class="list-group">
+                {% for filme in filmes %}
+                <li class="list-group-item">
+                    {{ filme.titulo }} - {{ filme.diretor }} ({{ filme.ano }}) - {{ filme.genero }}
+                    <a href="{{ url_for('filme_bp.edit_filme', filme_id=filme.id) }}" class="btn btn-primary">Editar</a>
+                    <form action="{{ url_for('filme_bp.delete_filme', filme_id=filme.id) }}" method="post" style="display:inline;">
+                        <button type="submit" class="btn btn-danger">Deletar</button>
+                    </form>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

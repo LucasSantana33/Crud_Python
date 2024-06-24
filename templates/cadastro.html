@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container mt-5">
+        <div id="app">
+            <h2 class="text-center mb-4">Cadastro</h2>
+            <form action="{{ url_for('usuario_bp.cadastro') }}" method="post" class="form-group">
+                <input type="text" name="login" class="form-control mb-2" placeholder="Login" required>
+                <input type="password" name="senha" class="form-control mb-2" placeholder="Senha" required>
+                <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
+            </form>
+            {% if error %}
+            <div class="alert alert-danger mt-3">{{ error }}</div>
+            {% endif %}
+            <p class="mt-3">Já tem uma conta? <a href="{{ url_for('usuario_bp.login') }}">Login</a></p>
+        </div>
+    </div>
+</body>
+</html>
